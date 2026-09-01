@@ -3,13 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#111111">
+<meta name="theme-color" content="#f5f5f7">
+<meta name="apple-mobile-web-app-capable" content="yes">
 
-<title>BOSSKIN IPA Store</title>
+<title>bosskin IPA Store</title>
 
 <style>
 * {
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -17,24 +19,31 @@ body {
     background: #f5f5f7;
     color: #111;
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
-                 "Segoe UI", Arial, sans-serif;
+                 "SF Pro Text", "Segoe UI", Arial, sans-serif;
 }
 
 .container {
-    max-width: 1000px;
+    max-width: 1050px;
     margin: 0 auto;
-    padding: 25px 16px 50px;
+    padding: 20px 18px 55px;
 }
+
+/* HEADER */
 
 .header {
     text-align: center;
-    padding: 25px 0 20px;
+    padding: 30px 0 25px;
 }
 
-.header h1 {
+.logo {
+    font-size: 42px;
+    font-weight: 850;
+    letter-spacing: -2px;
     margin: 0;
-    font-size: 36px;
-    font-weight: 800;
+}
+
+.logo span {
+    font-weight: 500;
 }
 
 .header p {
@@ -43,84 +52,292 @@ body {
     font-size: 16px;
 }
 
+/* SEARCH */
+
+.search-wrapper {
+    position: relative;
+    margin-bottom: 32px;
+}
+
 .search {
     width: 100%;
-    padding: 16px 18px;
-    border: 1px solid #ddd;
-    border-radius: 16px;
+    height: 54px;
+    padding: 0 18px 0 48px;
+    border: 0;
+    border-radius: 17px;
     background: white;
     font-size: 17px;
     outline: none;
-    margin-bottom: 25px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.05);
 }
 
+.search-icon {
+    position: absolute;
+    left: 17px;
+    top: 16px;
+    font-size: 20px;
+    color: #888;
+    pointer-events: none;
+}
+
+/* SECTIONS */
+
 .section-title {
-    font-size: 22px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 23px;
     font-weight: 750;
-    margin: 28px 0 12px;
+    letter-spacing: -0.4px;
+    margin: 30px 0 15px;
 }
 
 .apps {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 14px;
 }
 
+/* CARD */
+
 .card {
-    background: white;
-    border-radius: 20px;
-    padding: 18px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 128px;
+    padding: 17px;
+    background: rgba(255,255,255,0.96);
+    border-radius: 23px;
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.055),
+        0 1px 2px rgba(0,0,0,0.04);
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.card:active {
+    transform: scale(.985);
+}
+
+/* APP ICON */
+
+.app-icon {
+    width: 76px;
+    height: 76px;
+    min-width: 76px;
+    border-radius: 18px;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 28px;
+    font-weight: 800;
+    box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.18),
+        0 4px 10px rgba(0,0,0,.12);
+}
+
+.icon-sber {
+    background: linear-gradient(145deg,#00a66a,#007d4e);
+}
+
+.icon-alpha {
+    background: linear-gradient(145deg,#ef3124,#b40000);
+}
+
+.icon-gazprom {
+    background: linear-gradient(145deg,#0075c9,#003f80);
+}
+
+.icon-tinkoff {
+    background: linear-gradient(145deg,#ffd600,#e0ae00);
+    color:#111;
+}
+
+.icon-vtb {
+    background: linear-gradient(145deg,#0085ff,#004ca8);
+}
+
+.icon-mts {
+    background: linear-gradient(145deg,#e4003b,#a9002c);
+}
+
+.icon-open {
+    background: linear-gradient(145deg,#ef7b00,#bd4300);
+}
+
+.icon-rshb {
+    background: linear-gradient(145deg,#008a45,#005b2e);
+}
+
+.icon-ubrir {
+    background: linear-gradient(145deg,#ef3124,#8d0000);
+}
+
+.icon-sovkom {
+    background: linear-gradient(145deg,#ef3340,#a50012);
+}
+
+.icon-yandex {
+    background: linear-gradient(145deg,#ffcc00,#ff9900);
+    color:#111;
+}
+
+.icon-chatgpt {
+    background: linear-gradient(145deg,#444,#111);
+}
+
+.icon-vk {
+    background: linear-gradient(145deg,#2787f5,#1264c7);
+}
+
+.icon-max {
+    background: linear-gradient(145deg,#5b3df5,#2715a3);
+}
+
+.icon-default {
+    background: linear-gradient(145deg,#777,#333);
+}
+
+/* CARD INFO */
+
+.card-info {
+    min-width: 0;
+    flex: 1;
 }
 
 .app-name {
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 17px;
+    font-weight: 720;
     line-height: 1.25;
+    letter-spacing: -.2px;
 }
 
 .version {
     color: #888;
-    font-size: 14px;
-    margin: 7px 0 15px;
+    font-size: 13px;
+    margin-top: 6px;
 }
 
+/* BUTTON */
+
 .install {
-    display: block;
-    text-align: center;
-    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 92px;
+    margin-left: 10px;
+    padding: 10px 14px;
+    border-radius: 13px;
     background: #111;
     color: white;
-    padding: 12px;
-    border-radius: 12px;
-    font-weight: 600;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 650;
+    transition: transform .15s ease, background .15s ease;
+}
+
+.install:hover {
+    background: #2b2b2b;
 }
 
 .install:active {
-    transform: scale(0.98);
+    transform: scale(.94);
 }
 
-.footer {
-    text-align: center;
-    color: #999;
-    font-size: 13px;
-    margin-top: 40px;
-}
+/* NO RESULTS */
 
 .no-results {
     display: none;
     text-align: center;
     color: #888;
-    padding: 30px;
+    padding: 40px 20px;
+    font-size: 16px;
 }
 
-@media (max-width: 650px) {
-    .apps {
-        grid-template-columns: 1fr;
+/* FOOTER */
+
+.footer {
+    text-align: center;
+    color: #999;
+    font-size: 13px;
+    margin-top: 45px;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .container {
+        padding: 12px 13px 40px;
     }
 
-    .header h1 {
-        font-size: 30px;
+    .header {
+        padding: 25px 0 20px;
+    }
+
+    .logo {
+        font-size: 36px;
+    }
+
+    .apps {
+        grid-template-columns: 1fr;
+        gap: 11px;
+    }
+
+    .card {
+        min-height: 108px;
+        padding: 13px;
+        border-radius: 20px;
+    }
+
+    .app-icon {
+        width: 65px;
+        height: 65px;
+        min-width: 65px;
+        border-radius: 16px;
+        margin-right: 13px;
+        font-size: 24px;
+    }
+
+    .app-name {
+        font-size: 16px;
+    }
+
+    .version {
+        font-size: 12px;
+        margin-top: 5px;
+    }
+
+    .install {
+        min-width: 82px;
+        padding: 9px 11px;
+        font-size: 13px;
+        margin-left: 7px;
+    }
+
+    .section-title {
+        font-size: 21px;
+        margin-top: 27px;
+    }
+}
+
+@media (max-width: 390px) {
+
+    .app-icon {
+        width: 58px;
+        height: 58px;
+        min-width: 58px;
+        font-size: 21px;
+    }
+
+    .install {
+        min-width: 72px;
+        padding: 8px 9px;
+    }
+
+    .app-name {
+        font-size: 15px;
     }
 }
 </style>
@@ -131,164 +348,217 @@ body {
 <div class="container">
 
     <div class="header">
-        <h1>BOSSKIN IPA</h1>
+        <h1 class="logo">bosskin <span>IPA</span></h1>
         <p>Каталог приложений для iPhone</p>
     </div>
 
-    <input
-        type="search"
-        id="search"
-        class="search"
-        placeholder="🔎  Найти приложение..."
-        autocomplete="off"
-    >
+    <div class="search-wrapper">
+        <span class="search-icon">⌕</span>
+        <input
+            type="search"
+            id="search"
+            class="search"
+            placeholder="Найти приложение..."
+            autocomplete="off"
+        >
+    </div>
+
 
     <!-- БАНКИ -->
 
-    <div class="section-title">🏦 Банки и финансы</div>
+    <div class="section-title">
+        🏦 Банки и финансы
+    </div>
 
     <div class="apps">
 
         <div class="card">
-            <div class="app-name">СБЕР</div>
-            <div class="version">Последняя версия</div>
+            <div class="app-icon icon-sber">С</div>
+            <div class="card-info">
+                <div class="app-name">СБЕР</div>
+                <div class="version">Последняя версия</div>
+            </div>
             <a class="install" href="https://bosskin-pro.github.io/sber-ipa/">
                 Установить
             </a>
         </div>
 
         <div class="card">
-            <div class="app-name">СБЕР Бизнес Al dente</div>
-            <div class="version">4.00.0</div>
+            <div class="app-icon icon-sber">СБ</div>
+            <div class="card-info">
+                <div class="app-name">СБЕР Бизнес Al dente</div>
+                <div class="version">4.00.0</div>
+            </div>
             <a class="install" href="https://bosskin-pro.github.io/sberbussines-ipa/">
                 Установить
             </a>
         </div>
 
         <div class="card">
-            <div class="app-name">Альфа Инвестиции ToRefresh</div>
-            <div class="version">1.3.0</div>
+            <div class="app-icon icon-alpha">AI</div>
+            <div class="card-info">
+                <div class="app-name">Альфа Инвестиции ToRefresh</div>
+                <div class="version">1.3.0</div>
+            </div>
             <a class="install" href="https://bosskin-pro.github.io/alphainvest-ipa/">
                 Установить
             </a>
         </div>
 
         <div class="card">
-            <div class="app-name">Альфа</div>
-            <div class="version">Последняя версия</div>
+            <div class="app-icon icon-alpha">А</div>
+            <div class="card-info">
+                <div class="app-name">Альфа</div>
+                <div class="version">Последняя версия</div>
+            </div>
             <a class="install" href="https://bosskin-pro.github.io/alpha-ipa/">
                 Установить
             </a>
         </div>
 
         <div class="card">
-            <div class="app-name">Газпром</div>
-            <div class="version">Последняя версия</div>
+            <div class="app-icon icon-gazprom">Г</div>
+            <div class="card-info">
+                <div class="app-name">Газпром</div>
+                <div class="version">Последняя версия</div>
+            </div>
             <a class="install" href="https://bosskin-pro.github.io/gazprom-ipa/">
                 Установить
             </a>
         </div>
 
         <div class="card">
-            <div class="app-name">Газпром Инвестиции — Billfo</div>
-            <div class="version">1.159.21</div>
+            <div class="app-icon icon-gazprom">ГИ</div>
+            <div class="card-info">
+                <div class="app-name">Газпром Инвестиции — Billfo</div>
+                <div class="version">1.159.21</div>
+            </div>
             <a class="install" href="https://bosskin-pro.github.io/gazprominvest-ipa/">
                 Установить
             </a>
         </div>
 
         <div class="card">
-            <div class="app-name">Газпромнефть Бак+Бонус</div>
-            <div class="version">1.1.1</div>
+            <div class="app-icon icon-gazprom">ГБ</div>
+            <div class="card-info">
+                <div class="app-name">Газпромнефть Бак+Бонус</div>
+                <div class="version">1.1.1</div>
+            </div>
             <a class="install" href="https://bosskin-pro.github.io/gazpromneft-ipa/">
                 Установить
             </a>
         </div>
 
         <div class="card">
-            <div class="app-name">Т-Инвестиции SilentFund</div>
-            <div class="version">1.3.1</div>
+            <div class="app-icon icon-tinkoff">ТИ</div>
+            <div class="card-info">
+                <div class="app-name">Т-Инвестиции SilentFund</div>
+                <div class="version">1.3.1</div>
+            </div>
             <a class="install" href="https://bosskin-pro.github.io/tinkoffinvest-ipa/">
                 Установить
             </a>
         </div>
 
         <div class="card">
-            <div class="app-name">Тинькофф</div>
-            <div class="version">Последняя версия</div>
+            <div class="app-icon icon-tinkoff">Т</div>
+            <div class="card-info">
+                <div class="app-name">Тинькофф</div>
+                <div class="version">Последняя версия</div>
+            </div>
             <a class="install" href="https://bosskin-pro.github.io/tinkoff-ipa/">
                 Установить
             </a>
         </div>
 
         <div class="card">
-            <div class="app-name">ВТБ Инвестиции GetQuot</div>
-            <div class="version">2.0.0</div>
+            <div class="app-icon icon-vtb">ВТБ</div>
+            <div class="card-info">
+                <div class="app-name">ВТБ Инвестиции GetQuot</div>
+                <div class="version">2.0.0</div>
+            </div>
             <a class="install" href="https://bosskin-pro.github.io/VTBinvest-ipa/">
                 Установить
             </a>
         </div>
 
         <div class="card">
-            <div class="app-name">ВТБ Бизнес AthleoPro</div>
-            <div class="version">1.2601.1</div>
+            <div class="app-icon icon-vtb">В</div>
+            <div class="card-info">
+                <div class="app-name">ВТБ Бизнес AthleoPro</div>
+                <div class="version">1.2601.1</div>
+            </div>
             <a class="install" href="https://bosskin-pro.github.io/VTBBiznes-ipa/">
                 Установить
             </a>
         </div>
 
+        <!-- ОСТАВЛЯЕМ ТОЛЬКО ДОМ ЙОГИ -->
+
         <div class="card">
-            <div class="app-name">МТС Банк Кошелек</div>
-            <div class="version">2.13.0</div>
+            <div class="app-icon icon-mts">МТС</div>
+            <div class="card-info">
+                <div class="app-name">МТС Банк Дом йоги</div>
+                <div class="version">10.0.0</div>
+            </div>
             <a class="install" href="https://bosskin-pro.github.io/MTSBank-ipa/">
                 Установить
             </a>
         </div>
 
         <div class="card">
-            <div class="app-name">МТС Банк Кофе в Кармане</div>
-            <div class="version">9.0.0</div>
-            <a class="install" href="https://bosskin-pro.github.io/MTSBank-ipa/">
-                Установить
-            </a>
-        </div>
-
-        <div class="card">
-            <div class="app-name">МТС Банк Дом йоги</div>
-            <div class="version">10.0.0</div>
-            <a class="install" href="https://bosskin-pro.github.io/MTSBank-ipa/">
-                Установить
-            </a>
-        </div>
-
-        <div class="card">
-            <div class="app-name">Открытие Банк Open Digital</div>
-            <div class="version">4.08</div>
+            <div class="app-icon icon-open">О</div>
+            <div class="card-info">
+                <div class="app-name">Открытие Банк Open Digital</div>
+                <div class="version">4.08</div>
+            </div>
             <a class="install" href="https://bosskin-pro.github.io/openbank-ipa/">
                 Установить
             </a>
         </div>
 
         <div class="card">
-            <div class="app-name">Россельхоз Банк РСХБ</div>
-            <div class="version">22.10.2</div>
+            <div class="app-icon icon-rshb">Р</div>
+            <div class="card-info">
+                <div class="app-name">Россельхоз Банк РСХБ</div>
+                <div class="version">22.10.2</div>
+            </div>
             <a class="install" href="https://bosskin-pro.github.io/rsxb-ipa/">
                 Установить
             </a>
         </div>
 
         <div class="card">
-            <div class="app-name">УБРиР — РУбли</div>
-            <div class="version">5.18.0</div>
+            <div class="app-icon icon-ubrir">У</div>
+            <div class="card-info">
+                <div class="app-name">УБРиР — РУбли</div>
+                <div class="version">5.18.0</div>
+            </div>
             <a class="install" href="https://bosskin-pro.github.io/ubrir-ipa/">
                 Установить
             </a>
         </div>
 
         <div class="card">
-            <div class="app-name">Совкомбанк Синоптик+</div>
-            <div class="version">1.7.0</div>
+            <div class="app-icon icon-sovkom">С</div>
+            <div class="card-info">
+                <div class="app-name">Совкомбанк Синоптик+</div>
+                <div class="version">1.7.0</div>
+            </div>
             <a class="install" href="https://bosskin-pro.github.io/sovkom-ipa/">
+                Установить
+            </a>
+        </div>
+
+        <!-- YANDEX PAY -->
+
+        <div class="card">
+            <div class="app-icon icon-yandex">Я</div>
+            <div class="card-info">
+                <div class="app-name">Yandex Pay</div>
+                <div class="version">0.234.4</div>
+            </div>
+            <a class="install" href="https://bosskin-pro.github.io/yandexpay-ipa/">
                 Установить
             </a>
         </div>
@@ -298,94 +568,142 @@ body {
 
     <!-- ПРИЛОЖЕНИЯ -->
 
-    <div class="section-title">📱 Приложения и сервисы</div>
+    <div class="section-title">
+        📱 Приложения и сервисы
+    </div>
 
     <div class="apps">
 
         <div class="card">
-            <div class="app-name">Одноклассники</div>
-            <div class="version">11.63.1</div>
+            <div class="app-icon icon-default">OK</div>
+            <div class="card-info">
+                <div class="app-name">Одноклассники</div>
+                <div class="version">11.63.1</div>
+            </div>
             <a class="install" href="https://bosskin-pro.github.io/ok-ipa/">
                 Установить
             </a>
         </div>
 
         <div class="card">
-            <div class="app-name">2ГИС</div>
-            <div class="version">7.27.1</div>
+            <div class="app-icon icon-default">2Г</div>
+            <div class="card-info">
+                <div class="app-name">2ГИС</div>
+                <div class="version">7.27.1</div>
+            </div>
             <a class="install" href="https://bosskin-pro.github.io/2gis-ipa/">
                 Установить
             </a>
         </div>
 
         <div class="card">
-            <div class="app-name">Авито</div>
-            <div class="version">Последняя версия</div>
+            <div class="app-icon icon-default">А</div>
+            <div class="card-info">
+                <div class="app-name">Авито</div>
+                <div class="version">Последняя версия</div>
+            </div>
             <a class="install" href="https://bosskin-pro.github.io/avito-ipa/">
                 Установить
             </a>
         </div>
 
         <div class="card">
-            <div class="app-name">РЖД</div>
-            <div class="version">1.47.2</div>
+            <div class="app-icon icon-default">РЖД</div>
+            <div class="card-info">
+                <div class="app-name">РЖД</div>
+                <div class="version">1.47.2</div>
+            </div>
             <a class="install" href="https://bosskin-pro.github.io/rzd-ipa/">
                 Установить
             </a>
         </div>
 
         <div class="card">
-            <div class="app-name">ДомРу — ПроСкорость</div>
-            <div class="version">1.2.2</div>
+            <div class="app-icon icon-default">Д</div>
+            <div class="card-info">
+                <div class="app-name">ДомРу — ПроСкорость</div>
+                <div class="version">1.2.2</div>
+            </div>
             <a class="install" href="https://bosskin-pro.github.io/domru-ipa/">
                 Установить
             </a>
         </div>
 
         <div class="card">
-            <div class="app-name">Почта Mail</div>
-            <div class="version">Последняя версия</div>
+            <div class="app-icon icon-default">M</div>
+            <div class="card-info">
+                <div class="app-name">Почта Mail</div>
+                <div class="version">Последняя версия</div>
+            </div>
             <a class="install" href="https://bosskin-pro.github.io/PochtaMail-ipa/">
                 Установить
             </a>
         </div>
 
         <div class="card">
-            <div class="app-name">Облако Mail</div>
-            <div class="version">9.92.0</div>
+            <div class="app-icon icon-default">☁</div>
+            <div class="card-info">
+                <div class="app-name">Облако Mail</div>
+                <div class="version">9.92.0</div>
+            </div>
             <a class="install" href="https://bosskin-pro.github.io/OblakoMail-ipa/">
                 Установить
             </a>
         </div>
 
         <div class="card">
-            <div class="app-name">Happ</div>
-            <div class="version">5.2.0</div>
+            <div class="app-icon icon-default">H</div>
+            <div class="card-info">
+                <div class="app-name">Happ</div>
+                <div class="version">5.2.0</div>
+            </div>
             <a class="install" href="https://bosskin-pro.github.io/happ-ipa/">
                 Установить
             </a>
         </div>
 
         <div class="card">
-            <div class="app-name">VK</div>
-            <div class="version">Последняя версия</div>
+            <div class="app-icon icon-vk">VK</div>
+            <div class="card-info">
+                <div class="app-name">VK</div>
+                <div class="version">Последняя версия</div>
+            </div>
             <a class="install" href="https://bosskin-pro.github.io/vk-ipa/">
                 Установить
             </a>
         </div>
 
         <div class="card">
-            <div class="app-name">MAX</div>
-            <div class="version">Последняя версия</div>
+            <div class="app-icon icon-max">MAX</div>
+            <div class="card-info">
+                <div class="app-name">MAX</div>
+                <div class="version">Последняя версия</div>
+            </div>
             <a class="install" href="https://bosskin-pro.github.io/max-ipa/">
                 Установить
             </a>
         </div>
 
         <div class="card">
-            <div class="app-name">RuTube</div>
-            <div class="version">Последняя версия</div>
+            <div class="app-icon icon-default">R</div>
+            <div class="card-info">
+                <div class="app-name">RuTube</div>
+                <div class="version">Последняя версия</div>
+            </div>
             <a class="install" href="https://bosskin-pro.github.io/rutube-ipa/">
+                Установить
+            </a>
+        </div>
+
+        <!-- CHATGPT -->
+
+        <div class="card">
+            <div class="app-icon icon-chatgpt">◉</div>
+            <div class="card-info">
+                <div class="app-name">ChatGPT</div>
+                <div class="version">1.2026.230</div>
+            </div>
+            <a class="install" href="https://bosskin-pro.github.io/chatGPT-ipa/">
                 Установить
             </a>
         </div>
@@ -399,7 +717,7 @@ body {
 
 
     <div class="footer">
-        BOSSKIN IPA Store
+        bosskin IPA Store
     </div>
 
 </div>
